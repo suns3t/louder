@@ -1,0 +1,26 @@
+<div class="signup-form">   
+    <div class="card">
+        <div class="card-header">
+            <h2 class="text-xs-center">Create an Account</h2>
+        </div>
+        <div class="card-block">
+            <%= form_for @user, html: {class: "signup-form"}  do |f| %>
+                <fieldset class="form-group">
+                    <%= f.label :name %>
+                    <%= f.text_field :name, class: "form-control" %>
+                </fieldset>
+                <fieldset class="form-group">
+                    <%= f.label :email %>
+                    <%= f.email_field :email, class: "form-control" %>
+                </fieldset>
+                <fieldset class="form-group">
+                <%= f.label :password %>
+                <%= f.password_field :password, class: "form-control" %>
+                </fieldset>
+                <div class="form-group">
+                    <%= f.submit "Submit", class: "btn btn-primary form-control" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
