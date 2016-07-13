@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Louder</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+</head>
 
-    <body class="container">
-        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-            <a class="navbar-brand" href=<%= root_path %>>Louder</a>
-            <ul class="nav navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link", href=<%= login_path %>>Log In</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link", href=<%= new_user_path %>>Sign Up</a>
-                </li>
-            </ul>
-        </nav>
-        <%= yield %>
-    </body>
+<body class="container">
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href=<%= root_path %>>Louder</a>
+
+        <ul class="nav navbar-nav">
+            <% unless signed_in %>
+            <li class="nav-item">
+                <a class="nav-link", href=<%= login_path %>>Log In</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link", href=<%= new_user_path %>>Sign Up</a>
+            </li>
+            <% else %>
+            <li class="nav-item">
+                <a class="nav-link", href=<%= destroy_path %> data-method="delete"><%= current_user.name %>, Sign Out</a>
+            </li>
+            <% end %>
+        </ul>    
+    </nav>
+    <%= flash_messages %>
+    <%= yield %>
+</body>
 </html>

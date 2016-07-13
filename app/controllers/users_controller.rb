@@ -6,8 +6,8 @@ class UsersController < ApplicationController
 
     def create
         @user = User.create user_params
-        
         if @user.persisted?
+            session[:user_id] = @user.id 
             redirect_to root_path, notice: "You're in!"
         else
             render "new", notice: "Ops, something wrong :("
