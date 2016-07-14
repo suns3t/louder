@@ -1,3 +1,10 @@
-<h3 ><%= user.name %></h3>
-<h5><%= user.email %></h5>
-<p class="text-xs-right">Created in <i><%= time_ago_in_words(user.created_at) %></i> </p>
+<div class="media" style="border-bottom: #31b0d5 1px solid;">
+  <a class="media-left" href="#">
+    <%= image_tag user.image_url_or_default, alt: user.name, class: "media-object" %>
+</a>
+<div class="media-body">
+    <h4 class="media-heading"><%= user.name %></h4>
+    <%= user.email %>
+    <p class="text-xs-right">Created in <i><%= time_ago_in_words(user.created_at) %></i> </p>    
+</div>
+</div>
