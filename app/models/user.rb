@@ -12,6 +12,10 @@ class User < ApplicationRecord
         return image_url if image_url else "http://loremflickr.com/60/60/#{name}"
     end
 
+    def to_string
+        return "#{name} - #{email}"
+    end
+    
     def self.from_omniauth(auth)
         # Check out the Auth Hash function at https://github.com/mkdynamic/omniauth-facebook#auth-hash
         # and figure out how to get email for this user.
