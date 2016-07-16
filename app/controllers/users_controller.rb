@@ -8,15 +8,20 @@ class UsersController < ApplicationController
     def create
         @user = User.create user_params
         if @user.persisted?
+            # Send out a sign up email
+            UserNotifierMailer.send_signup_email(@user).deliver
             session[:user_id] = @user.id 
-            redirect_to root_path, notice: "You're in!"
+            flash[:success] = "You're in!"
+            redirect_to root_path
         else
-            render "new", notice: "Ops, something wrong :("
+            flash[:notice] = "Ops, something wrong :("
+            render "new" 
         end
     end
 
     def index
-        @users = User.all 
+        # Load incoming messages for current user, mark them as read
+        @messages = Message.where(recipient_id: current_user.id).order("created_at DESC")
     end
 
     private 

@@ -54,3 +54,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Gem to login with Facebook
   gem 'omniauth'
   gem 'omniauth-facebook', '~> 3.0.0'
+# Gem to save something everyone don't want to see
+gem "figaro"

@@ -2,5 +2,15 @@
 @import "users";
 
 .container {
-    max-width: 540px;
+    max-width: 50em;
+}
+
+.page-body {
+    height: 100%;
+    min-height: 30em;
+}
+.footer {
+    position:absolute; /* to place it somewhere on the screen */
+    bottom:10px;        /* makes it lock to the bottom */
+    border-top: #31b0d5 1px solid;
 }

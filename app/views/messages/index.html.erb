@@ -1,3 +1,7 @@
 <h3>Sent message</h3>
-<p>List of sent message from current user goes here</p>
-<%= render @messages %>
+<% if @messages.count > 0 %>
+    <p>List of sent message from current user goes here</p>
+    <%= render @messages %>
+<% else %>
+    <p>You haven't sent any message</p>
+<% end %>

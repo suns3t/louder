@@ -21,13 +21,15 @@ class SessionsController < ApplicationController
             # Validate sucessful email and password
             session[:user_id] = @user.id
             redirect_to users_path, notice: "Welcome back, #{@user.name}"
-          else
-            # Password is incorrect
-            redirect_to "new", notice: "Oh no, wrong password!"
-          end
         else
-        # Email is incorrect
-        redirect_to "new" , notice: "Ahh, not that email."        
+            # Password is incorrect
+            flash[:error] = "Oh no, wrong password!"
+            render "new"
+        end
+      else
+          # Email is incorrect
+          flash[:error] = "Ahh, not that email."        
+          render "new"
       end
   end
 
