@@ -8,48 +8,45 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
-<body class="container">
-    <div id="particles-js">
-    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-        <a class="navbar-brand" href=<%= root_path %>>Louder</a>
-
-        <ul class="nav navbar-nav">
-            <% unless signed_in %>
-            <li class="nav-item">
-                <a class="nav-link", href=<%= login_path %>>Log In</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link", href=<%= new_user_path %>>Sign Up</a>
-            </li>
-            <% else %>
-            <li class="nav-item">
-                <a class="nav-link" href=<%= user_path(current_user.id) %>><%= current_user.name %></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link", href=<%= destroy_path %> data-method="delete">Sign Out</a>
-            </li>
-            <% end %>
-        </ul>    
-    </nav>
-    <hr>
-    <h2 class="text-xs-center">Louder</h2>
-    <hr>
-    <% if signed_in %>
-        <div class="row text-xs-center">
-            <div class="btn-group" role="group" aria-label="Basic example">
-                <%= link_to "New Message", new_user_message_path(user_id: current_user.id), class: "btn btn-primary" %>
-                <%= link_to "Add Friends", friendships_path, class: "btn btn-primary" %>
-                <%= link_to "Sent Messages", user_messages_path(user_id: current_user.id), class: "btn btn-primary" %>
-            </div>
-        </div>
-    <% end %>
+<body>
+    <div id="particles-js" class="particle-background"></div>
     <div class="page-body">
-        <%= flash_messages %>   
-        <%= yield %>
+        <nav class="navbar navbar-light">
+            <a class="navbar-brand" href=<%= root_path %>><h3>Louder</h3></a>
+            <ul class="nav navbar-nav">
+                <% unless signed_in %>
+                <li class="nav-item">
+                    <a class="nav-link", href=<%= login_path %>>Log In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link", href=<%= new_user_path %>>Sign Up</a>
+                </li>
+                <% else %>
+                <li class="nav-item">
+                    <a class="nav-link" href=<%= user_path(current_user.id) %>><%= current_user.name %></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link", href=<%= destroy_path %> data-method="delete">Sign Out</a>
+                </li>
+                <li class="nav-item pull-xs-right">
+                    <a class="nav-link dropdown-toggle" id="action-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Action
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="action-dropdown">
+                        <%= link_to "New Message", new_user_message_path(user_id: current_user.id), class: "dropdown-item" %>
+                        <%= link_to "Sent Messages", user_messages_path(user_id: current_user.id), class: "dropdown-item" %>
+                        <div class="dropdown-divider"></div>
+                        <%= link_to "Add Friends", friendships_path, class: "dropdown-item" %>
+                    </div>
+                </li>
+                <% end %>
+            </ul>
+        </nav>
+        <div class="main-content">
+            <%= flash_messages %>   
+            <%= yield %>
+        </div>
     </div>
-</div>
 </body>
-<footer class="footer">
-    Developed with heart!
-</footer>
 </html>
+

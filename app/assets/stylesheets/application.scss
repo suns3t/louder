@@ -1,16 +1,50 @@
 @import "bootstrap";
 @import "users";
 
-.container {
-    max-width: 50em;
+html,body{ 
+    width:100%;
+    height:100%;
+}
+
+
+canvas{
+  display:block;
+  vertical-align:bottom;
+}
+
+.navbar-brand {
+  transform: translateX(-50%);
+  left: 50%;
+  position: absolute;
 }
 
 .page-body {
-    height: 100%;
-    min-height: 30em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width:32em;
+  height:50em;
+  margin-top: -25em; /*set to a negative number 1/2 of your height*/
+  margin-left: -18em; /*set to a negative number 1/2 of your width*/
 }
-.footer {
-    position:absolute; /* to place it somewhere on the screen */
-    bottom:10px;        /* makes it lock to the bottom */
-    border-top: #31b0d5 1px solid;
+
+.main-content {
+  border-radius: 4px;
+  box-sizing: border-box;
+  background: #eee;
+  padding: 20px;
+  height: 40em;
+  overflow-y: scroll;
+}
+
+
+.particle-background {
+    // background-color:  rgb(24, 154, 182); 
+    background-color: #37aa5f;
+    width: 100%;
+    height: 100%;
+    background-image: url('');
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
 }

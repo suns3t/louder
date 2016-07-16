@@ -56,3 +56,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
   gem 'omniauth-facebook', '~> 3.0.0'
 # Gem to save something everyone don't want to see
 gem "figaro"
+
+# Use this gem to reload Jquery when reload page using Turbolink
+gem 'jquery-turbolinks'
