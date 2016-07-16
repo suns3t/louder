@@ -1,3 +1,4 @@
+<% if current_user.id != user.id %>
 <div class="media" style="border-bottom: #31b0d5 1px solid;">
     <a class="media-left" href="#">
         <%= image_tag user.image_url_or_default , alt: user.name, class: "media-object" %>
@@ -6,5 +7,13 @@
         <h4 class="media-heading"><%= user.name %></h4>
         <%= user.email %>
         <p class="text-xs-right">Created in <i><%= time_ago_in_words(user.created_at) %></i> </p>    
+        
+            <% if current_user.friendships.exists?(friend_id: user.id) %>
+                <%= link_to "Remove", friendship_path(id: user.id), :method => :delete %>
+            <% else %>
+                <%= link_to "Add Friend", friendships_path(friend_id: user.id), :method => :post %>
+            <% end %>
+        
     </div>
 </div>
+<% end %>

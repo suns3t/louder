@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :friendships
   get "login" => 'sessions#new'
   get 'auth/:provider/callback' => 'sessions#callback'
 

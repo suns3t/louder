@@ -4,6 +4,10 @@ class User < ApplicationRecord
     validates :name, presence: true
     validates :email, presence: true, uniqueness: { case_sensitive: false }
 
+    has_many :friendships
+    has_many :friend, through: :friendships
+    
+
     def image_url_or_default
         return image_url if image_url else "http://loremflickr.com/60/60/#{name}"
     end
@@ -14,6 +18,7 @@ class User < ApplicationRecord
         # Note that Facebook sometimes does not return email,
         # in that case you can use facebook-id@facebook.com as a workaround
         email = auth[:info][:email] || "#{auth[:uid]}@facebook.com"
+        name = auth[:info][:name]
         user = where(email: email).first_or_initialize
         #
         # Set other properties on user here.
@@ -21,5 +26,21 @@ class User < ApplicationRecord
         #
         # Finally, return user
         user.save! && user
+    end
+
+    def received_messages
+        where(recipient: self)
+    end
+
+    def sent_messages
+        where(sender: self)
+    end
+
+    def latest_received_messages(n)
+        received_messages.order(created_at: :desc).limit(n)
+    end
+
+    def unread_messages
+        received_messages.unread
     end
 end
