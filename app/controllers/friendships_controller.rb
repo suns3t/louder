@@ -2,7 +2,7 @@ class FriendshipsController < ApplicationController
     before_action :require_login
 
     def index
-        @friendships = current_user.friendships.all 
+        @users = User.all 
     end
 
     def create
@@ -10,14 +10,14 @@ class FriendshipsController < ApplicationController
 
         if @friendship.cannot_add_yourself
             flash[:error] = "Friendship need 2 people"
-            redirect_to root_path
+            redirect_to friendships_path
         else
             if @friendship.save
                 flash[:success] = "Added a friend"
-                redirect_to root_path
+                redirect_to friendships_path
             else
                 flash[:error] = "Once friends, always friend"
-                redirect_to root_path
+                redirect_to friendships_path
             end
         end
     end
@@ -26,6 +26,6 @@ class FriendshipsController < ApplicationController
         @friendship = current_user.friendships.find_by(friend_id: params[:id])
         @friendship.destroy
         flash[:notice] = "You let a friend away"
-        redirect_to root_path
+        redirect_to friendships_path
     end
 end

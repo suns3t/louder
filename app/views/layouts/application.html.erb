@@ -22,7 +22,10 @@
             </li>
             <% else %>
             <li class="nav-item">
-                <a class="nav-link", href=<%= destroy_path %> data-method="delete"><%= current_user.name %>, Sign Out</a>
+                <a class="nav-link" href=<%= user_path(current_user.id) %>><%= current_user.name %></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link", href=<%= destroy_path %> data-method="delete">Sign Out</a>
             </li>
             <% end %>
         </ul>    

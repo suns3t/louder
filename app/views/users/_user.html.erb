@@ -5,14 +5,12 @@
     </a>
     <div class="media-body">
         <h4 class="media-heading"><%= user.name %></h4>
-        <%= user.email %>
-        <p class="text-xs-right">Created in <i><%= time_ago_in_words(user.created_at) %></i> </p>    
-        
-            <% if current_user.friendships.exists?(friend_id: user.id) %>
-                <%= link_to "Remove", friendship_path(id: user.id), :method => :delete %>
-            <% else %>
-                <%= link_to "Add Friend", friendships_path(friend_id: user.id), :method => :post %>
-            <% end %>
+        <%= user.email %>  
+        <% if current_user.friendships.exists?(friend_id: user.id) %>
+        <%= link_to "Remove", friendship_path(id: user.id), :method => :delete, class: "text-danger" %>
+        <% else %>
+        <%= link_to "Add Friend", friendships_path(friend_id: user.id), :method => :post, class: "text-primary" %>
+        <% end %>
         
     </div>
 </div>

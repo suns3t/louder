@@ -2,5 +2,7 @@
 <h3>Homepage</h3>
 <p>List of incoming messages goes here.</p>
 <p class="text-xs-right"> <a href="#" class="btn btn-primary">New Message</a> </p>
-<p class="text-xs-right"> <a href="#" class="btn btn-primary">Add Friends</a> </p>
+<p class="text-xs-right">
+    <%= link_to "Add Friends", friendships_path, class: "btn btn-primary" %>
+</p>
 <p class="text-xs-right"> <a href="#" class="btn btn-primary">Sent Messages</a> </p>
