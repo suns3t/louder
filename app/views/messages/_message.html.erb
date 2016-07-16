@@ -1,0 +1,9 @@
+<div class="media" style="border-bottom: #31b0d5 1px solid;">
+    <div class="media-body text-xs-right">
+        <h4 class="media-heading"><%= message.recipient.name %></h4>
+        <%= message.body %>
+    </div>
+    <a class="media-right" href="#">
+        <%= image_tag message.recipient.image_url_or_default , alt: message.recipient.name, class: "media-object" %>
+    </a>
+</div>

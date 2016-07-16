@@ -21,9 +21,9 @@ class MessagesController < ApplicationController
 
     def index
         # List all message sent from current user
-        @messages = Message.find_by(sender_id: current_user.id)
+        @messages = Message.where(sender_id: current_user.id)
     end
-    
+
     def destroy
         # some logic goes here
     end 
