@@ -59,3 +59,5 @@ gem "figaro"
 
 # Use this gem to reload Jquery when reload page using Turbolink
 gem 'jquery-turbolinks'
+
+gem 'rails_12factor', group: :production
