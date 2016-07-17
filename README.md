@@ -40,6 +40,7 @@ The following **additional** features are implemented:
 
 - [x] Index message by conversation between sender and recipient
 - [x] Send email welcome when user sign up in the Website.
+- [x] Try to use particleJS to pretty up the app.
 
 ## Video Walkthrough 
 
