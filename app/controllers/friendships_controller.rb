@@ -2,7 +2,8 @@ class FriendshipsController < ApplicationController
     before_action :require_login
 
     def index
-        @users = User.all 
+        # List all friends, except yourself
+        @users = User.where('id != ?', current_user.id) 
     end
 
     def create
