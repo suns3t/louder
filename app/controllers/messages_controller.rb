@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+    helper_method :load_conversation
 
     def new
         # allow user to write a new message to a recipient in his friend list
@@ -26,7 +27,22 @@ class MessagesController < ApplicationController
 
     def destroy
         # some logic goes here
+        @message = Message.find(params[:id])
+
+        if (params[:user_id].to_i == current_user.id)
+            @message.destroy
+            flash[:success] = "Message is removed"
+            redirect_to 'index'
+        else
+            byebug
+            flash[:error] = "You cannot delete others' message"
+            redirect_to :back
+        end
     end 
+
+    def load_conversation(sender_id, recipient_id)
+        Message.where("(sender_id = ? AND recipient_id = ?) OR (sender_id = ? AND recipient_id = ?)", sender_id, recipient_id, recipient_id, sender_id).order("created_at DESC")
+    end
 
     private 
         def message_params

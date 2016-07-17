@@ -1,21 +1,16 @@
+<h3 class="text-xs-center">Compose new message</h3>
 <% if @recipient_list.count > 0 %>
-    <div class="card">
-        <div class="card-header">
-            <h3 class="text-xs-center">Compose new message</h3>
-        </div>
-        <div class="card-block">
-            <%= form_tag user_messages_path %>
-            <div class="form-group">
-                <%= label_tag :recipient_id %>
-                <%= select_tag :recipient_id, options_for_select(@recipient_list), class: "form-control", required: true %>
-            </div>
-            <div class="form-group">
-            <%= label_tag :body %>
-            <%= text_area_tag :body, nil, class: "form-control", required: true %>
-            </div>
-            <%= submit_tag "Send Message", class: "btn btn-primary form-control" %>
-        </div>
-    </div>
+<hr>
+<%= form_tag user_messages_path %>
+<div class="form-group">
+    <%= label_tag :recipient_id %>
+    <%= select_tag :recipient_id, options_for_select(@recipient_list), class: "form-control", required: true %>
+</div>
+<div class="form-group">
+    <%= label_tag :body %>
+    <%= text_area_tag :body, nil, class: "form-control", required: true %>
+</div>
+<%= submit_tag "Send Message", class: "btn btn-success form-control" %>
 <% else %>
-    <p>Add a friend before you can send message.</p>
+<p>Add a friend before you can send message.</p>
 <% end %>

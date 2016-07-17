@@ -1,5 +1,4 @@
-<% if current_user.id != user.id %>
-<div class="media" style="border-bottom: #31b0d5 1px solid;">
+<div class="media" >
     <a class="media-left" href="#">
         <%= image_tag user.image_url_or_default , alt: user.name, class: "media-object" %>
     </a>
@@ -14,4 +13,3 @@
         
     </div>
 </div>
-<% end %>

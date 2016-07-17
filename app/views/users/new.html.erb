@@ -18,9 +18,13 @@
                 <%= f.password_field :password, class: "form-control" %>
                 </fieldset>
                 <div class="form-group">
-                    <%= f.submit "Submit", class: "btn btn-primary form-control" %>
+                    <%= f.submit "Submit", class: "btn btn-success form-control" %>
                 </div>
             <% end %>
+            <div class: "form-group">
+                <label>Or sign up with your Facebook account?</label>
+                <a class="btn btn-secondary form-control", href="/auth/facebook">Log In with Facebook</a>
+            </div>
         </div>
     </div>
 </div>

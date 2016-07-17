@@ -1,29 +1,9 @@
-<% if current_user.id == message.sender_id %>
-<!-- Load message as sent message -->
-    <div class="media" style="border-bottom: #31b0d5 1px solid;">
-        <div class="media-body text-xs-right">
-            <h4 class="media-heading"><%= message.recipient.name %></h4>
-            <p><%= message.body %> 
-                <span class="text-muted"> - Sent <%= time_ago_in_words(message.created_at) %> ago,</span>
-                <span class="text-muted"><%= if message.read? then " read #{time_ago_in_words(message.read_at)} ago." else " Unread" end %></span>
-        </div>
-        <a class="media-right" href="#">
-            <%= image_tag message.recipient.image_url_or_default , alt: message.recipient.name, class: "media-object" %>
-        </a>
-    </div>
-
-<% else %>
-<!-- Load message as incoming message -->
-    <div class="media" style="border-bottom: #31b0d5 1px solid;">
-        <a class="media-left" href="#">
-            <%= image_tag message.sender.image_url_or_default , alt: message.sender.name, class: "media-object" %>
-        </a>
-        <div class="media-body text-xs-left">
-            <h4 class="media-heading"><%= message.sender.name %></h4>
-            <p><%= message.body %> 
-                <span class="text-muted"> - Sent <%= time_ago_in_words(message.created_at) %> ago,</span>
-                <span class="text-muted"> read <%= if message.read? then "#{time_ago_in_words(message.read_at)} ago." else message.mark_as_read! end %></span>
-            </p>
-        </div>
-    </div>
+<div class="alert alert-success">
+    Conversion between <b><%= mess.first.sender.name %> & <%= mess.first.recipient.name%></b>
+    <%= link_to "Reply", new_user_message_path(user_id: current_user.id), class: "a text-success pull-xs-right" %>
+</div>
+<% mess.each do | message | %>
+    <%= render partial: "messages/message_body", locals: {message: message} %> 
 <% end %>
+
+

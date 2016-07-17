@@ -1,0 +1,21 @@
+<% if current_user.id == message.sender_id %>
+<!-- Load message as sent message -->
+    <blockquote style="border-left: green 3px solid; padding-left:5px;">
+<!-- Allow sender to remove message if it is unread -->
+    <% unless message.read? %>
+    <%= link_to "Remove", user_message_path(user_id: message.sender.id, id: message.id), :method => :delete, class: "text-danger" %>
+    <% end %>
+    <p class="text-success">
+        <b><%= message.sender.name %>: </b><%= message.body %><br/>
+        <i class="text-muted">Sent <%= time_ago_in_words(message.created_at) %> ago. - <%= if message.read? then "Read #{time_ago_in_words(message.read_at)} ago." else " Unread" end %></i>
+        </p>
+    </blockquote>
+<% else %>
+    <!-- Load message as incoming message -->
+    <blockquote class="blockquote-reverse" style="border-right: green 3px solid; padding-right:5px;">
+        <% unless message.read? then message.mark_as_read! end %>
+        <p class="text-success"><b><%= message.sender.name %>: </b><%= message.body %><br/>
+            <i class="text-muted">Sent <%= time_ago_in_words(message.created_at) %> ago. - Read <%= time_ago_in_words(message.read_at)%> ago</i>
+        </p>
+    </blockquote>
+<% end %>

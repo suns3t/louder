@@ -1,7 +1,11 @@
+<h3 class="block-center">Welcome to Bubble!</h3>
+<p>This page is to send and receive message from your friends.</p>
+<blockquote class="blockquote blockquote-reverse text-success">Let's burst out laughing together!</blockquote>
+
 <div class="signup-form">   
     <div class="card">
         <div class="card-header">
-            <h2 class="text-xs-center">Sign In Here</h2>
+            <h2 class="text-xs-center">Log In Here</h2>
         </div>
         <div class="card-block">
             <%= form_tag(sessions_create_path, method: :post, class: "signup-form")  do %>
@@ -13,11 +17,11 @@
                 <%= label_tag :password %>
                 <%= password_field_tag :password, nil,  class: "form-control", required: true %>
             </div>
-            <%= submit_tag "Sign In", class: "btn btn-primary form-control"%>
+            <%= submit_tag "Sign In", class: "btn btn-success form-control"%>
             <% end %>
             <hr>
             <div class: "form-group">
-                <label>Or sign up with your Facebook account?</label>
+                <label>Or log in with your Facebook account?</label>
                 <a class="btn btn-secondary form-control", href="/auth/facebook">Log In with Facebook</a>
             </div>
             

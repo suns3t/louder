@@ -22,10 +22,11 @@ class User < ApplicationRecord
         # Note that Facebook sometimes does not return email,
         # in that case you can use facebook-id@facebook.com as a workaround
         email = auth[:info][:email] || "#{auth[:uid]}@facebook.com"
-        name = auth[:info][:name]
+        
         user = where(email: email).first_or_initialize
         #
         # Set other properties on user here.
+        name = auth[:info][:name]
         # You may want to call user.save! to figure out why user can't save
         #
         # Finally, return user

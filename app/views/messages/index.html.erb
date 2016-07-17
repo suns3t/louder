@@ -1,7 +1,9 @@
 <h3>Sent message</h3>
 <% if @messages.count > 0 %>
     <p>List of sent message from current user goes here</p>
-    <%= render @messages %>
+    <% @messages.select(:recipient_id).group(:recipient_id).each do |group| %>
+        <%= render partial: "messages/message", locals: {mess: load_conversation(current_user.id,group[:recipient_id])} %>
+    <% end %>
 <% else %>
     <p>You haven't sent any message</p>
 <% end %>

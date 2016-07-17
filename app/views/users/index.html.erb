@@ -1,8 +1,9 @@
-
-<h3>Homepage</h3>
-<% if @messages.count > 0 %>
+<h3>Inbox</h3>
+<% if @messages.unread.count > 0 %>
     <p>List of incoming messages goes here.</p>
-    <%= render @messages %>
+    <% @messages.select(:sender_id).group(:sender_id).each do |group| %>
+        <%= render partial: "messages/message", locals: {mess: @messages.where(sender_id: group[:sender_id]).unread.order("created_at DESC")} %>
+    <% end %>
 <% else %>
-    <p>No incoming messages yet. Add friends and start sending message!</p>
+    <p>No more incoming messages. Add friends and start sending message!</p>
 <% end %>

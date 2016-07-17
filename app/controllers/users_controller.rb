@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
     def index
         # Load incoming messages for current user, mark them as read
-        @messages = Message.where(recipient_id: current_user.id).order("created_at DESC")
+        @messages = Message.where(recipient_id: current_user.id)
     end
 
     private 

@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
         if session[:user_id]
             true
         else
-            redirect_to login_path, notice: "Please login to see, plz!" 
+            redirect_to login_path
         end 
 
     end
