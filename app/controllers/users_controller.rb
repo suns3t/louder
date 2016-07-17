@@ -9,7 +9,13 @@ class UsersController < ApplicationController
         @user = User.create user_params
         if @user.persisted?
             # Send out a sign up email
-            UserNotifierMailer.send_signup_email(@user).deliver
+            # Mailgun is so strick that you need to autherized user email before we can send mail.
+            begin
+                UserNotifierMailer.send_signup_email(@user).deliver
+            rescue
+                flash[:error] = "My mail service is down, cannot send mail now"
+            end 
+             
             session[:user_id] = @user.id 
             flash[:success] = "You're in!"
             redirect_to root_path

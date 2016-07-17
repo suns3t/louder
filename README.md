@@ -4,9 +4,9 @@
 
 Submitted by: **Huy Ngoc Hoang**
 
-Time spent: **X** hours
+Time spent: **15** hours
 
-URL: **Insert your Heroku URL here**
+URL: **http://bubble-louder.herokuapp.com/**
 
 ## User Stories
 
@@ -38,13 +38,14 @@ The following **optional** functionality is complete:
 
 The following **additional** features are implemented:
 
-- [ ] (List anything else that you can get done to improve the app functionality!)
+- [x] Index message by conversation between sender and recipient
+- [x] Send email welcome when user sign up in the Website.
 
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
 
-![Video Walkthrough](relative-path-to-your-gif-file-on-github-or-absolute-path-to-file-on-imgur-or-youtube)
+![Video Walkthrough](louder-demo.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
@@ -54,7 +55,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2016] [Huy Ngoc Hoang]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
