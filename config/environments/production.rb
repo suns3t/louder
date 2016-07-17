@@ -92,4 +92,5 @@ Rails.application.configure do
     :password       => ENV['MAILGUN_SMTP_PASSWORD'],
     :domain         => 'bubble-louder.herokuapp.com/', #eg: 'yourappname.herokuapp.com'
     :authentication => :plain,
+  }
 end
