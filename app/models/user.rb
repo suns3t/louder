@@ -25,15 +25,20 @@ class User < ApplicationRecord
         email = auth[:info][:email] || "#{auth[:uid]}@facebook.com"
         
         user = where(email: email).first_or_initialize
-        #
-        # Set other properties on user here.
-        name = auth[:info][:name]
-        password_digest = rand(100000..999999)
-        byebug
-        # You may want to call user.save! to figure out why user can't save
-        #
-        # Finally, return user
-        user.save! && user
+        
+        if user.id == nil
+
+            # Set other properties on user here.
+            user.name = auth[:info][:name]
+            user.email = email
+            user.password_digest = rand(100000..999999)
+
+            # You may want to call user.save! to figure out why user can't save
+            #
+            # Finally, return user
+            user.save!
+        end
+        return user
     end
 
     def received_messages
