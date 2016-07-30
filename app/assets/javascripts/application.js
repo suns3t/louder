@@ -19,5 +19,6 @@
 //= require particles
 //= require app
 //= require turbolinks
+//= require jquery.infinite-pages
 //= require_tree .
 

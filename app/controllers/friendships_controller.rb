@@ -3,7 +3,7 @@ class FriendshipsController < ApplicationController
 
     def index
         # List all friends, except yourself
-        @users = User.where('id != ?', current_user.id) 
+        @users = User.where('id != ?', current_user.id).page(params[:page]) 
     end
 
     def create

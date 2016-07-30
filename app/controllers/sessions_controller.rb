@@ -15,11 +15,11 @@ class SessionsController < ApplicationController
 
     end
   end
+  
   def create
       if @user = User.find_by(email: params[:email])
         if @user.authenticate(params[:password])
             # Validate sucessful email and password
-            UserNotifierMailer.send_signup_email(@user).deliver
             session[:user_id] = @user.id
             redirect_to users_path, notice: "Welcome back, #{@user.name}"
         else

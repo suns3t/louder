@@ -61,3 +61,7 @@ gem "figaro"
 gem 'jquery-turbolinks'
 
 gem 'rails_12factor', group: :production
+
+# Infinity scrolling
+gem 'jquery-infinite-pages'
+gem 'kaminari'

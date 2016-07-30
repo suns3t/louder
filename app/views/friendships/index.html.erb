@@ -1,3 +1,9 @@
 <h3>List of users to add friend</h3>
+<div class="infinite-table">
+    <%= render @users %>
+</div>
+<p class="pagination">
+    <%= link_to_next_page(@users, 'Load more', remote: true) %>
+</p>
 
-<%= render @users %>
+

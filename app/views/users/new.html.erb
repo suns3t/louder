@@ -5,22 +5,27 @@
         </div>
         <div class="card-block">
             <%= form_for @user, html: {class: "signup-form"}  do |f| %>
-                <fieldset class="form-group">
-                    <%= f.label :name %>
-                    <%= f.text_field :name, class: "form-control" %>
-                </fieldset>
-                <fieldset class="form-group">
-                    <%= f.label :email %>
-                    <%= f.email_field :email, class: "form-control" %>
-                </fieldset>
-                <fieldset class="form-group">
+            <fieldset class="form-group">
+                <%= f.label :name %>
+                <%= f.text_field :name, class: "form-control" %>
+            </fieldset>
+            <fieldset class="form-group">
+                <%= f.label :email %>
+                <%= f.email_field :email, class: "form-control" %>
+            </fieldset>
+            <fieldset class="form-group">
                 <%= f.label :password %>
                 <%= f.password_field :password, class: "form-control" %>
-                </fieldset>
-                <div class="form-group">
-                    <%= f.submit "Submit", class: "btn btn-success form-control" %>
-                </div>
+            </fieldset>
+            <div class="form-group">
+                <%= f.submit "Submit", class: "btn btn-success form-control" %>
+            </div>
             <% end %>
+            <hr>
+            <div class: "form-group">
+                <label>Or sign up with your Facebook account?</label>
+                <a class="btn btn-secondary form-control", href="/auth/facebook">Log In with Facebook</a>
+            </div>
         </div>
     </div>
 </div>

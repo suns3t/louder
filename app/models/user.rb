@@ -3,10 +3,11 @@ class User < ApplicationRecord
 
     validates :name, presence: true
     validates :email, presence: true, uniqueness: { case_sensitive: false }
+    validates :password_digest, presence: true
 
     has_many :friendships
     has_many :friend, through: :friendships
-    
+    paginates_per 2    
 
     def image_url_or_default
         return image_url if image_url else "http://loremflickr.com/60/60/#{name}"
@@ -27,6 +28,8 @@ class User < ApplicationRecord
         #
         # Set other properties on user here.
         name = auth[:info][:name]
+        password_digest = rand(100000..999999)
+        byebug
         # You may want to call user.save! to figure out why user can't save
         #
         # Finally, return user

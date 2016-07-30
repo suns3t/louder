@@ -1,0 +1,11 @@
+// Append new data
+$("<%=j render @users %>")
+  .appendTo($(".infinite-table"));
+
+// Update pagination link
+<% if @users.last_page? %>
+  $('.pagination').html("That's all, folks!");
+<% else %>
+  $('.pagination')
+    .html("<%=j link_to_next_page(@users, 'Load more', :remote => true) %>");
+<% end %>
